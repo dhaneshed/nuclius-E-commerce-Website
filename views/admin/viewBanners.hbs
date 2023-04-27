@@ -1,0 +1,190 @@
+<body>
+  <section class="content-main">
+    <div class="content-header">
+      <div>
+        <div class="row">
+          <div class="col-md-10">
+            <h2 class="content-title card-title"> Banners</h2>
+          </div>
+          <div class="col-md-2">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Banner</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title text-center">Add Banners</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <form action="/admin/addBanner" method="POST" enctype="multipart/form-data">
+                          <label for="subHeading">Sub Heading </label>
+                          <input type="text" name="subHeading" class="form-control" id="subHeading"
+                            required />
+                        
+
+                          <label for="mainHeading">Main Heading </label>
+                          <input type="text" name="mainHeading" class="form-control" id="mainHeading"
+                           required />
+                        
+
+
+
+
+
+                          <label for="content">Content </label>
+                          <input type="text" name="content" class="form-control" id="content" 
+                            required />
+                          
+
+
+
+
+                          <label for="tagline_01">Tagline 01 </label>
+                          <input type="text" name="tagline_01" class="form-control" id="tagline_01" 
+                            required />
+                         
+
+
+
+
+                          <label for="tagline_02">Tagline 02 </label>
+                          <input type="text" name="tagline_02" class="form-control" id="tag-line_02"
+                             required />
+                        
+
+
+
+
+
+                          <label for="Image">Image</label>
+                          <img src="" alt="" style="width: 100px; height:auto  " id="imgView" class="pt-3">
+                          <input type="file" class="form-control" name="bannerImg" onchange="viewImage(event)" required>
+
+
+
+                          <button type="submit" class="btn btn-success mt-4">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <p></p>
+    </div>
+    <p></p>
+    </div>
+    </div>
+    <div class="card mb-4">
+      <!-- card-header end// -->
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover" id="ordersTable">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th>Sub Heading</th>
+                <th scope="col">Main Heading</th>
+                <th scope="col">Content</th>
+                <th scope="col">Tag line 01</th>
+                <th scope="col">Tag line 02</th>
+                <th scope="col">Image</th>
+                <th scope="col" class="text-end">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each banners}}
+              <tr>
+                <td>{{this.count}}</td>
+                <td><b>{{this.subHeading}}</b></td>
+                <td>{{this.mainHeading}}</td>
+                <td>{{this.content}}</td>
+                <td>{{this.tagline_01}}</span></td>
+                <td>{{this.tagline_02}}</td>
+                <td><img class="zoomable-image" style="width:50px;height:50px;" src="/uploads/{{this.image}}" alt="">
+                </td>
+                <td>
+
+                  <a href="/admin/editBanner/{{this._id}}" class="btn btn-primary">Edit</a>
+                  <a href="/admin/deleteBanner/{{this._id}}" class="btn btn-danger"
+                    onclick=" return confirm('Do you want to delete {{this.Name}}?Are you sure?')">Delete</a>
+
+
+                </td>
+              </tr>
+              {{/each}}
+
+            </tbody>
+          </table>
+          <br>
+          <br>
+
+
+
+
+          <br>
+          <br>
+        </div> <!-- table-responsive //end -->
+      </div> <!-- card-body end// -->
+    </div> <!-- card end// -->
+  </section> <!-- content-main end// -->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+  function validateForm() {
+    // Get the input values
+    var subHeading = document.getElementById("subHeading").value;
+    var mainHeading = document.getElementById("mainHeading").value;
+    var content = document.getElementById("content").value;
+    var tagline_01 = document.getElementById("tagline_01").value;
+    var tagline_02 = document.getElementById("tagline_02").value;
+    var bannerImg = document.getElementById("bannerImg").value;
+    
+    // Check if any of the inputs are empty
+    if (subHeading == "" || mainHeading == "" || content == "" || tagline_01 == "" || tagline_02 == "" || bannerImg == "") {
+      alert("Please fill out all fields.");
+      return false;
+    }
+    
+    // Check if the image file type is valid
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if (!allowedExtensions.exec(bannerImg)) {
+      alert("Please upload a valid image file (jpg, jpeg, png, gif).");
+      document.getElementById("bannerImg").value = "";
+      return false;
+    }
+    
+    // If all inputs are valid, submit the form
+    return true;
+  }
+  
+  // Attach the form validation function to the form's onsubmit event
+  document.querySelector("form").addEventListener("submit", function(event) {
+    if (!validateForm()) {
+      event.preventDefault();
+    }
+  });
+  
+  // Preview the selected image
+  function viewImage(event) {
+    var image = document.getElementById("imgView");
+    image.src = URL.createObjectURL(event.target.files[0]);
+    image.style.display = "block";
+  }
+</script>

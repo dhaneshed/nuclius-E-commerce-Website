@@ -1,0 +1,227 @@
+<body>
+  <section class="content-main">
+    <div class="content-header">
+      <div>
+        <h2 class="content-title card-title">Add Product</h2>
+        <p></p>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="col-md-12">
+          <form action="/admin/addProduct" method="POST" enctype="multipart/form-data">
+            <label for="Name"> Name</label>
+            <input type="text" name="Name" class="form-control" id="name" onblur="namecheck()" required />
+            <label id="nmlabel" for="name" style="display: none; color:red;">This field is
+              required</label>
+            <label id="nmlabel-01" for="name" style="display: none; color:red;">Name doesn't start
+              with a number</label>
+            <label id="nmlabel-02" for="name" style="display: none; color:red;">Name doesn't contain
+              special characters</label>
+
+            <label for="Category">Category</label>
+            <select name="Category" id="Category">
+              {{#each categories}}
+              <option value={{this.CategoryName}}>{{this.CategoryName}}</option>
+              {{/each}}
+            </select>
+            <br>
+            <label for="Price">Price</label>
+            <input type="number" name="Price" class="form-control" id="price" onblur="pricecheck()" required />
+            <label id="prlabel" for="price" style="display: none; color:red;">This field is
+              required</label>
+            <label id="prlabel-01" for="price" style="display: none; color:red;">Price doesn't start
+              with an alphabet</label>
+            <label id="prlabel-02" for="price" style="display: none; color:red;">Price doesn't contain
+              special characters</label>
+
+
+            <label for="Description">Description</label>
+            <input type="text" name="Description" class="form-control" id="description" onblur="descriptioncheck()"
+              required />
+            <label id="dslabel" for="description" style="display: none; color:red;">This field is
+              required</label>
+            <label id="dslabel-01" for="description" style="display: none; color:red;">Description doesn't start
+              with a number</label>
+            <label id="dslabel-02" for="description" style="display: none; color:red;">Description doesn't contain
+              special characters</label>
+
+
+
+            <label for="Quantity">Quantity</label>
+            <input type="number" name="Quantity" class="form-control" id="quantity" onblur="quantitycheck()" required />
+            <label id="qtlabel" for="quantity" style="display: none; color:red;">This field is
+              required</label>
+            <label id="qtlabel-01" for="quantity" style="display: none; color:red;">Price doesn't start
+              with an alphabet</label>
+            <label id="qtlabel-02" for="quantity" style="display: none; color:red;">Price doesn't contain
+              special characters</label>
+
+
+            <label for="Image">Image</label>
+            <img src="" alt="" style="width: 100px; height:auto  " id="imgView" class="pt-3">
+            <input type="file" class="form-control" name="file" onchange="viewImage(event)" required>
+
+
+            <img src="" alt="" style="width: 100px; height:auto  " id="imgView1" class="pt-3">
+            <input type="file" class="form-control" name="file" onchange="viewImage1(event)" required>
+
+
+            <img src="" alt="" style="width: 100px; height:auto  " id="imgView2" class="pt-3">
+            <input type="file" class="form-control" name="file" onchange="viewImage2(event)" required>
+
+
+            <img src="" alt="" style="width: 100px; height:auto  " id="imgView3" class="pt-3">
+            <input type="file" class="form-control" name="file" onchange="viewImage3(event)" required>
+
+
+
+
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script>
+  function viewImage(event) {
+    document.getElementById('imgView').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+  function viewImage1(event) {
+    document.getElementById('imgView1').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+  function viewImage2(event) {
+    document.getElementById('imgView2').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+  function viewImage3(event) {
+    document.getElementById('imgView3').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+
+
+  function namecheck() {
+    let name = document.getElementById("name").value
+    let nm = null
+    nm = name.trim()
+    var letters = /^[A-Za-z]+$/;
+    var spc = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+[A-Za-z]*$/;
+    document.getElementById("name").value = nm;
+    if (nm == "" || name == null) {
+      document.getElementById("nmlabel").style.display = "block"
+      return false
+    }
+    else if (!isNaN(nm[0])) {
+      document.getElementById("nmlabel").style.display = "none"
+      document.getElementById("nmlabel-01").style.display = "block"
+      return false
+    }
+    else if (nm.match(spc)) {
+      document.getElementById("nmlabel").style.display = "none"
+      document.getElementById("nmlabel-01").style.display = "none"
+      document.getElementById("nmlabel-02").style.display = "block"
+      return false
+    }
+    else {
+      document.getElementById("nmlabel").style.display = "none"
+      document.getElementById("nmlabel-01").style.display = "none"
+      document.getElementById("nmlabel-02").style.display = "none"
+      return true
+
+    }
+  }
+
+  function pricecheck() {
+    let name = document.getElementById("price").value
+    let nm = null
+    nm = name.trim()
+    var letters = /^[A-Za-z]+$/;
+    var spc = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+[A-Za-z]*$/;
+    document.getElementById("price").value = nm;
+    if (nm == "" || name == null) {
+      document.getElementById("prlabel").style.display = "block"
+      return false
+    }
+    else if (isNaN(nm[0])) {
+      document.getElementById("prlabel").style.display = "none"
+      document.getElementById("prlabel-01").style.display = "block"
+      return false
+    }
+    else if (nm.match(spc)) {
+      document.getElementById("prlabel").style.display = "none"
+      document.getElementById("prlabel-01").style.display = "none"
+      document.getElementById("prlabel-02").style.display = "block"
+      return false
+    }
+    else {
+      document.getElementById("prlabel").style.display = "none"
+      document.getElementById("prlabel-01").style.display = "none"
+      document.getElementById("prlabel-02").style.display = "none"
+      return true
+
+    }
+  }
+
+
+  function descriptioncheck() {
+    let name = document.getElementById("description").value
+    let nm = null
+    nm = name.trim()
+    var letters = /^[A-Za-z]+$/;
+    var spc = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+[A-Za-z]*$/;
+    document.getElementById("description").value = nm;
+    if (nm == "" || name == null) {
+      document.getElementById("dslabel").style.display = "block"
+      return false
+    }
+    else if (!isNaN(nm[0])) {
+      document.getElementById("dslabel").style.display = "none"
+      document.getElementById("dslabel-01").style.display = "block"
+      return false
+    }
+    else if (nm.match(spc)) {
+      document.getElementById("dslabel").style.display = "none"
+      document.getElementById("dslabel-01").style.display = "none"
+      document.getElementById("dslabel-02").style.display = "block"
+      return false
+    }
+    else {
+      document.getElementById("dslabel").style.display = "none"
+      document.getElementById("dslabel-01").style.display = "none"
+      document.getElementById("dslabel-02").style.display = "none"
+      return true
+
+    }
+  }
+
+
+  function quantitycheck() {
+    let name = document.getElementById("quantity").value
+    let nm = null
+    nm = name.trim()
+    var letters = /^[A-Za-z]+$/;
+    var spc = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+[A-Za-z]*$/;
+    document.getElementById("quantity").value = nm;
+    if (nm == "" || name == null) {
+      document.getElementById("qtlabel").style.display = "block"
+      return false
+    }
+    else if (isNaN(nm[0])) {
+      document.getElementById("qtlabel").style.display = "none"
+      document.getElementById("qtlabel-01").style.display = "block"
+      return false
+    }
+    else if (nm.match(spc)) {
+      document.getElementById("qtlabel").style.display = "none"
+      document.getElementById("qtlabel-01").style.display = "none"
+      document.getElementById("qtlabel-02").style.display = "block"
+      return false
+    }
+    else {
+      document.getElementById("qtlabel").style.display = "none"
+      document.getElementById("qtlabel-01").style.display = "none"
+      document.getElementById("qtlabel-02").style.display = "none"
+      return true
+
+    }
+  }
+</script>

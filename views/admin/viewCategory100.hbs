@@ -1,0 +1,58 @@
+<section class="">
+  <div class="container d-flex justify-content-center">
+    <div class="row w-75 mt-5">
+      <h1 style="margin:auto">Categories</h1>
+
+      <div class="col-md-12">
+        <h2 class="text-center">Add Category</h2>
+        <form action="/admin/addCategory" method="POST">
+          <label for="CategoryName">Category Name {{#if preExist}}
+            <p style="color:red">Category Already Exist!!!</p>
+            {{/if}}
+          </label>
+          <input type="text" name="CategoryName" class="form-control" />
+          <button type="submit" class="btn btn-success mt-4">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Table section -->
+<section w-50 mx-auto>
+  <div class="card-body">
+    <div class="row mt-5 mx-auto">
+      <div class="table-responsive">
+        <div class="table-responsive">
+          <table class="table align-middle table-nowrap mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="align-middle" scope="col">NO:</th>
+                <th class="align-middle" scope="col">Category Name</th>
+                <th class="align-middle" scope="col">Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each categories}}
+              <tr>
+                <th scope="row">1</th>
+                <td>{{this.CategoryName}}</td>
+
+                <td>
+
+                  <a href="/admin/editCategory/{{this._id}}" class="btn btn-primary">Edit</a>
+                  <a href="/admin/deleteCategory/{{this._id}}" class="btn btn-danger"
+                    onclick=" return confirm('Do you want to delete {{this.CategoryName}}? Are you sure?')">Delete</a>
+
+
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- table-responsive end// -->
+    </div>
+  </div>
+</section>

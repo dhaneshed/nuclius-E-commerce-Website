@@ -1,0 +1,21 @@
+<body>
+  <section class="content-main">
+    <div class="content-header">
+      <div>
+        <h2 class="content-title card-title">Edit Category</h2>
+        <p></p>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="col-md-12">
+          <form action="/admin/category" method="POST">
+            <label for="CategoryName">Category Name</label>
+            <input type="text" name="CategoryName" class="form-control" value="{{category.CategoryName}}" />
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

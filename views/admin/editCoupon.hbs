@@ -1,0 +1,29 @@
+<body>
+  <section class="content-main">
+    <div class="content-header">
+      <div>
+        <h2 class="content-title card-title">Create a Coupon</h2>
+        <p></p>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-body">
+        <form method="POST" action="/admin/editCoupons/{{coupon._id}}">
+          <label for="couponName">Coupon Name:</label>
+          <input type="text" class="form-control" id="couponName" name="couponName" value="{{coupon.couponName}}">
+          <label for="discountAmount">Discount Amount </label>
+          <input type="number" class="form-control" id="discountAmount" name="discountAmount" value="{{coupon.discountAmount}}">
+          <br><br>
+          <label for="couponDescription">Description:</label>
+          <input type="text" class="form-control" id="couponDescription" name="couponDescription" value="{{coupon.couponDescription}}">
+          <br><br>
+          <label for="expirationDate">Expiration Date:</label>
+          <input type="date" class="form-control" id="expirationDate" name="expirationDate" value="{{coupon.expirationDate}}">
+          <br><br>
+          <button class="btn btn-success" type="submit">Generate Coupon</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </section>
+</body>

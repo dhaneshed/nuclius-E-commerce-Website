@@ -1,0 +1,29 @@
+<body>
+  <section class="content-main">
+    <div class="content-header">
+      <div>
+        <h2 class="content-title card-title">Create a Coupon</h2>
+        <p></p>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <div class="card-body">
+        <form method="POST" action="/admin/addCoupon">
+          <label for="couponName">Coupon Name:</label>
+          <input type="text" class="form-control" id="couponName" name="couponName">
+          <label for="discountAmount">Discount Amount </label>
+          <input type="number" class="form-control" id="discountAmount" name="discountAmount" required>
+          <br><br>
+          <label for="couponDescription">Description:</label>
+          <input type="text" class="form-control" id="couponDescription" name="couponDescription" required>
+          <br><br>
+          <label for="expirationDate">Expiration Date:</label>
+          <input type="date" class="form-control" id="expirationDate" name="expirationDate" required>
+          <br><br>
+          <button class="btn btn-success" type="submit">Generate Coupon</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </section>
+</body>

@@ -1,0 +1,50 @@
+<body>
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Users </h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <!-- card-header end// -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="ordersTable">
+                        <thead>
+                            <tr>
+                                <th>No:</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each users}}
+                            <tr>
+                                <td>{{this.count}}</td>
+                                <td>{{this.Name}}</td>
+                                <td><b>{{this.phone}}</b></td>
+                                <td>{{this.Email}}</td>
+                                <td>
+                                    {{#if isBlocked}}
+                                    <a href="/admin/activateUser/{{this._id}}" class="btn btn-success">Activate</a>
+                                    {{else}}
+                                    <a href="/admin/disableUser/{{this._id}}" class="btn btn-danger"
+                                        onclick=" return confirm('Do you want to disable {{this.name}}? Are you sure?')">Disable</a>
+
+                                    {{/if}}
+
+                                </td>
+
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div> <!-- table-responsive //end -->
+            </div> <!-- card-body end// -->
+        </div> <!-- card end// -->
+    </section> <!-- content-main end// -->
+</body>

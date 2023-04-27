@@ -1,0 +1,60 @@
+<body>
+  <section class="content-main mt-80 mb-80 text-center">
+    <div class="card mx-auto card-login text-center">
+      <div class="card-body text-center">
+        <div class="text-center" >
+          <h4 class="card-title mb-4" style="color:green; font-size:25px;">Login</h4>
+          <div class="text-center">
+          <form action="/login" method="POST" style="max-width: 300px; margin-left:515px;">
+
+
+            {{#if userBlockErr}}
+            <p style="color:red">Profile is blocked</p>
+            {{/if}}
+
+            {{#if loginErr}}
+            <p style="color:red">Invalid Username or Password</p>
+            {{/if}}
+            <div class="form-outline mb-4 text-center">
+              {{!-- <label for="">Email address</label> --}}
+              <input type="email" class="form-control" name="Email" placeholder="Enter email" id="email"
+                onblur="emailcheck()" required>
+              <label id="el" for="email" style="display: none; color:red;">This field is
+                required</label>
+              <label id="el-01" for="email" style="display: none; color:red;">Email doesn't start with
+                a number</label>
+              <label id="el-02" for="email" style="display: none; color:red;">Email is invalid</label>
+            </div>
+            <div class="form-outline mb-4 text-center">
+              {{!-- <label for="">Password</label> --}}
+              <input type="password" class="form-control" name="Password" placeholder="Password"
+                onblur="passwordcheck()" required>
+              <label id="pwlabel" for="Password" style="display: none; color:red;">This field is required</label>
+              <label id="pwlabel-01" for="Password" style="display: none; color:red;">Password must contain at least one
+                number</label>
+              <label id="pwlabel-02" for="Password" style="display: none; color:red;">Password must contain at least one
+                special
+                character</label>
+              <label id="pwlabel-03" for="Password" style="display: none; color:red;">Password must be at least 6
+                characters
+                long</label>
+
+            </div>
+            <button type="submit" class="btn btn-primary float-right"
+              style="height:40px; width:300px; padding:5px;">Submit</button>
+          </form>
+
+          </div>
+
+          <p>OR</p>
+          <a href="/loginOtp"><button class="btn btn-success" style="height:40px; width:150px; padding:5px;">Login with
+              OTP</button></a>
+          <a href="/signup"><button class="btn btn-success" style="height:40px; width:150px; padding:5px;">Create new
+              account</button></a>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

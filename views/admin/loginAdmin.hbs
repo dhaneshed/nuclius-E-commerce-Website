@@ -1,0 +1,103 @@
+<body>
+  <section class="content-main mt-80 mb-80">
+    <div class="card mx-auto card-login">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Admin Login</h4>
+        <form action="/admin/login" method="post" class="">
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="email" id="form2Example1" name="Email" id="email" onblur="emailcheck()" class="form-control"
+              required />
+            <label class="form-label" for="form2Example1">Email address</label>
+            <label id="el" for="email" style="display: none; color:red;">This field is
+              required</label>
+            <label id="el-01" for="email" style="display: none; color:red;">Email doesn't start with
+              a number</label>
+            <label id="el-02" for="email" style="display: none; color:red;">Email is invalid</label>
+          </div>
+
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="form2Example2" name="Password" id="password" class="form-control" />
+        <label class="form-label" for="form2Example2">Password</label>
+      </div>
+
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+          <!-- Checkbox -->
+          {{!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+            <label class="form-check-label" for="form2Example31">
+              Remember me
+            </label>
+          </div> --}}
+        </div>
+
+        {{!-- <div class="col">
+          <!-- Simple link -->
+          <a href="#!">Forgot password?</a>
+        </div> --}}
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary !important btn-block mb-4">
+        Sign in
+      </button>
+
+      <!-- Register buttons -->
+      <div class="text-center">
+        {{!-- <p>Not a member? <a href="#!">Register</a></p>
+        <p>or sign up with:</p>
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button> --}}
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-google"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-link btn-floating mx-1">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+      </form>
+
+    </div>
+    </div>
+
+
+
+  </section>
+</body>
+<script>
+
+  function emailcheck() {
+    var val = document.getElementById("email").value
+    var v = null
+    v = val.trim()
+    document.getElementById("email").value = v;
+    if (v == "" || val == null) {
+      document.getElementById("el").style.display = "block"
+      return false
+    }
+    else if (!isNaN(v[0])) {
+      document.getElementById("el-01").style.display = "block"
+      return false
+    }
+
+
+    else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v)) {
+      document.getElementById("el-02").style.display = "block"
+      return false
+    }
+  }
+
+
+</script>

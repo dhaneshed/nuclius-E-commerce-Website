@@ -1,0 +1,64 @@
+<div class="container mt-20 mb-20">
+  <div class="row">
+  <div class="col-md-6 m-auto">
+    <div class="container mt-5 pl-5">
+      <h2 class="text-center">Create new account</h2>
+      <div id="error"></div>
+      <form action="/signup" method="post" id="form">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="name" id="name" class="form-control" name="Name" placeholder="Enter Name" id="name"
+            placeholder="Enter your name" onblur="namecheck()" required>
+          <label id="nmlabel" for="name" style="display: none; color:red;">This field is
+            required</label>
+          <label id="nmlabel-01" for="name" style="display: none; color:red;">Name doesn't start
+            with a number</label>
+          <label id="nmlabel-02" for="name" style="display: none; color:red;">Name doesn't contain
+            special characters</label>
+
+        </div>
+        <div class="form-group">
+          <label for="">Phone number</label>
+          <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter Phone Number"
+            onblur="phonecheck()" required>
+          <label id="ml" for="phone" style="display: none; color:red;">This field is
+            required</label>
+          <label id="ml-01" for="phone" style="display: none; color:red;">Minimum 10
+            digits required</label>
+
+        </div>
+        <div class="form-group">
+          <label for="">Email address</label>
+          <input type="email" class="form-control" name="Email" placeholder="Enter email" id="email"
+            onblur="emailcheck()" required>
+          <label id="el" for="email" style="display: none; color:red;">This field is
+            required</label>
+          <label id="el-01" for="email" style="display: none; color:red;">Email doesn't start with
+            a number</label>
+          <label id="el-02" for="email" style="display: none; color:red;">Email is invalid</label>
+
+
+
+
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="password" class="form-control" name="Password" placeholder="Password" id="Password"
+            onblur="passwordcheck()" required>
+          <label id="pwlabel" for="Password" style="display: none; color:red;">This field is required</label>
+          <label id="pwlabel-01" for="Password" style="display: none; color:red;">Password must contain at least one
+            number</label>
+          <label id="pwlabel-02" for="Password" style="display: none; color:red;">Password must contain at least one special
+            character</label>
+          <label id="pwlabel-03" for="Password" style="display: none; color:red;">Password must be at least 6 characters
+            long</label>
+        </div>
+
+        <a href="/login">Already have account ?</a>
+        <button type="submit" class="btn btn-primary float-right">Signup</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
