@@ -26,9 +26,9 @@ module.exports={
     let productCount=await userHelpers.getProductCount()
     let categoryCount=await userHelpers.getCategoryCount()
     let AverageValue=await userHelpers.getMonthlyIncome()
-    AverageValue=AverageValue[0]?.AverageValue
+    AverageValue=AverageValue[0] && AverageValue[0].AverageValue
     console.log("AVG",AverageValue);
-    revenue=revenue[0]?.revenue
+    revenue= revenue[0] && revenue[0].revenue
     console.log("REVENUEEEE",revenue);
        
   
