@@ -37,7 +37,7 @@ module.exports={
 
 isCategoryExist: (category)=>{
   return new Promise(async(resolve,reject)=>{
-    let catexist=db.get().collection(collection.CATEGORY_COLLECTION).findOne({CategoryName:category})
+    let catexist=await db.get().collection(collection.CATEGORY_COLLECTION).findOne({CategoryName:category})
    
      .then((catexist)=>{
       resolve(catexist);

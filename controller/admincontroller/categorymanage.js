@@ -39,11 +39,13 @@ module.exports={
       console.error(`The operation failed with error: ${error.message}`);
     });
   },
-  postAddCategory:(req, res) => {
-    console.log(req.body);
-    let catexist=categoryHelpers.isCategoryExist(req.body);
+  postAddCategory:async(req, res) => {
+    console.log("CATEAGory reqbody",req.body);
+    let catexist= await categoryHelpers.isCategoryExist(req.body);
+    console.log("CATEXIST",catexist);
     if(catexist)
     {
+      console.log("CATEGORY EXIST condition");
       let preExist=true;
       categoryHelpers.getAllCategories()
       .then((categories) => {
@@ -53,6 +55,7 @@ module.exports={
 
     }else
     {
+      console.log("CATEGORY ADD condition")
       preExist=false;
       categoryHelpers.addCategory(req.body)
       .then((data)=>{
