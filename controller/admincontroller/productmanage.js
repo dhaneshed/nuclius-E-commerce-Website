@@ -54,6 +54,8 @@ module.exports={
   postAddProduct:(req, res) => {
     let images = req.files.map(files=>files.filename) ;
     req.body.images=images;
+    req.body.Quantity=parseInt(req.body.Quantity);
+    req.body.Price=parseInt(req.body.Price);
     console.log(req.body.images);
     productHelpers.addProduct(req.body)
     .then(() => {
