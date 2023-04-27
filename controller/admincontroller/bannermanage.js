@@ -67,7 +67,7 @@ postAddBanner:(req, res) => {
     let id=req.params.id
     let image = null;
 
-    if(req.file?.filename)
+    if(req.file && req.file.filename)
     {
      image=req.file.filename
     }
