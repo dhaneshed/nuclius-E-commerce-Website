@@ -20,7 +20,7 @@ postAddBanner:(req, res) => {
   req.body.image=image;
   bannerHelpers.addBanner(req.body)
   .then(() => {
-      res.redirect('/admin')
+      res.redirect('/admin/banner')
 
   })
   .catch(error => {

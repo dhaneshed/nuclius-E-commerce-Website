@@ -9,7 +9,7 @@
     <div class="card mb-4">
       <div class="card-body">
         <div class="col-md-12">
-          <form action="/admin/editBanner/{{banner._id}}" method="POST">
+          <form action="/admin/editBanner/{{banner._id}}" method="POST" enctype="multipart/form-data">
             <label for="subHeading">Sub Heading </label>
             <input type="text" name="subHeading" class="form-control" id="subHeading" onblur="namecheck()" value="{{banner.subHeading}}"  />
             <label id="nmlabel" for="name" style="display: none; color:red;">This field is

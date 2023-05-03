@@ -73,7 +73,7 @@ router.get('/addBanner', middleware.adminAuth, adminBannerController.getAddBanne
 router.post('/addBanner',imgUpload.bannerAdd, adminBannerController.postAddBanner);
 router.get('/deleteBanner/:id',middleware.adminAuth,adminBannerController.getDeleteBanner);
 router.get('/editBanner/:id',middleware.adminAuth,adminBannerController.getEditBanner);
-router.post('/editBanner/:id',imgUpload.editeduploads, adminBannerController.postEditBanner);
+router.post('/editBanner/:id',imgUpload.bannerEdit, adminBannerController.postEditBanner);
 
 
 
