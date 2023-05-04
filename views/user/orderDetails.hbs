@@ -148,6 +148,8 @@
                     onclick=" return confirm('Do you want to Return Item?Are you sure?')">Return Items</a>
                   {{else if (eq order.status "Return")}}
                   &nbsp;
+                  {{else if (eq order.status "Cancel")}}
+                  &nbsp;
                   {{else}}
                   <a href="/order-cancel/{{order._id}}" class="btn btn-danger"
                     onclick=" return confirm('Do you want to Cancel Order?Are you sure?')">Cancel Items</a>
