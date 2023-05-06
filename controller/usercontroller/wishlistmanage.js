@@ -33,7 +33,7 @@ module.exports={
 
     }
 
-    res.render('user/wishList', { products, user: req.session.user,cartCount, wishListCount,isWishListEmpty,stock})
+    res.render('user/wishlist', { products, user: req.session.user,cartCount, wishListCount,isWishListEmpty,stock})
   },
   getAddToWishList:(req, res) => {
     const productId = req.params.id;

@@ -24,11 +24,11 @@ module.exports = {
     console.log(userData);
     return new Promise(async (resolve, reject) => {
       userData.Password = await bcrypt.hash(userData.Password, 10)
-        // Get the total count of  users in the users collection
-        const totalUsers = await db.get().collection(collection.USER_COLLECTION).countDocuments();
-  
-        // Add the count field to the user document
-        userData.count = totalUsers + 1;
+      // Get the total count of  users in the users collection
+      const totalUsers = await db.get().collection(collection.USER_COLLECTION).countDocuments();
+
+      // Add the count field to the user document
+      userData.count = totalUsers + 1;
       db.get().collection(collection.USER_COLLECTION).insertOne(userData)
         .then((data) => {
 
@@ -170,18 +170,18 @@ module.exports = {
     })
   },
 
-  blockedUserCheck:(userId)=>{
-        
-    return new Promise(async(resolve, reject) => {
-       await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)}).then((response)=>{
-       console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",response.isBlocked);
+  blockedUserCheck: (userId) => {
+
+    return new Promise(async (resolve, reject) => {
+      await db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(userId) }).then((response) => {
+        console.log(",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,", response.isBlocked);
         resolve(response)
-       })
+      })
     })
 
   },
 
- 
+
   addToCart: (proId, userId) => {
     let proObj = {
       item: objectId(proId),
@@ -199,7 +199,7 @@ module.exports = {
                 $inc: { 'products.$.quantity': 1 }
               }
             ).then(() => {
-              resolve({outOfStock:false})
+              resolve({ outOfStock: false })
             })
 
           // update the product quantity in the inventory
@@ -519,10 +519,9 @@ module.exports = {
 
     return new Promise((resolve, reject) => {
       total = parseInt(total) - parseInt(discount)
-      let status='pending';
-      if(order['payment-method']==='COD' || order['payment-method']==='WALLET')
-      {
-       status='placed';
+      let status = 'pending';
+      if (order['payment-method'] === 'COD' || order['payment-method'] === 'WALLET') {
+        status = 'placed';
       }
 
       const date = new Date();
@@ -541,12 +540,12 @@ module.exports = {
       db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj)
 
         .then((response) => {
-          
+
           if (status === 'placed') {
             db.get().collection(collection.CART_COLLECTION).deleteOne({ user: objectId(order.userId) });
           }
 
-    
+
           resolve(response.insertedId)
 
         })
@@ -736,7 +735,7 @@ module.exports = {
         ).then(() => {
           resolve()
         })
-      .catch(error => {
+        .catch(error => {
           console.error(`The operation failed with error: ${error.message}`);
         });
     })
@@ -825,12 +824,12 @@ module.exports = {
               status: 'placed'
             }
           }
-        ) .then(() => {
+        ).then(() => {
           resolve()
         })
 
-         
-        
+
+
     })
   },
   returnOrder: (orderId) => {
@@ -1222,7 +1221,7 @@ module.exports = {
 
     })
   },
-  removeWishListProduct:  (details) => {
+  removeWishListProduct: (details) => {
     return new Promise((resolve, reject) => {
 
       db.get().collection(collection.WISHLIST_COLLECTION)
@@ -1246,31 +1245,31 @@ module.exports = {
 
 
   },
-  getWalletBalance:(userId) => {
+  getWalletBalance: (userId) => {
     return new Promise(async (resolve, reject) => {
-      let wallet=await db.get().collection(collection.WALLET_COLLECTION).findOne({user:objectId(userId)})
-      let balance=Math.abs(wallet.balance) ;
+      let wallet = await db.get().collection(collection.WALLET_COLLECTION).findOne({ user: objectId(userId) })
+      let balance = Math.abs(wallet.balance);
       resolve(balance)
     })
   },
   addToWallet: (refund, userId) => {
-    let amount=parseInt(refund);
+    let amount = parseInt(refund);
     return new Promise(async (resolve, reject) => {
       let userWallet = await db.get().collection(collection.WALLET_COLLECTION).findOne({ user: objectId(userId) })
 
       if (userWallet) {
-         
-          // update the balance in the wallet
-          db.get().collection(collection.WALLET_COLLECTION)
-            .updateOne({ user: objectId(userId) },
-              {
-                $inc: {balance:amount }
-              }
-            ).then(() => {
-              resolve()
-            })
-         
-      }  else {
+
+        // update the balance in the wallet
+        db.get().collection(collection.WALLET_COLLECTION)
+          .updateOne({ user: objectId(userId) },
+            {
+              $inc: { balance: amount }
+            }
+          ).then(() => {
+            resolve()
+          })
+
+      } else {
         let balanceObj = {
           user: objectId(userId),
           balance: amount
@@ -1284,38 +1283,37 @@ module.exports = {
 
     })
   },
-  updateWallet:(total,userId) => {
-    let amount=parseInt(total);
+  updateWallet: (total, userId) => {
+    let amount = parseInt(total);
     return new Promise(async (resolve, reject) => {
-      let wallet=await db.get().collection(collection.WALLET_COLLECTION).findOne({user:objectId(userId)})
-      const balance=Math.abs(wallet.balance) ;
-      console.log(balance,"BALANCE AMount");
-      if(balance<amount)
-      {
-        let outOfCash=false;
-        resolve({outOfCash:true})
-      }else{
-          // update the balance in the wallet
-          db.get().collection(collection.WALLET_COLLECTION)
-            .updateOne({ user: objectId(userId) },
-              {
-                $inc: {balance: -amount }
-              }
-            ).then(() => {
-              let walletSuccess=false;
-              resolve({walletSuccess:true})
-            })
+      let wallet = await db.get().collection(collection.WALLET_COLLECTION).findOne({ user: objectId(userId) })
+      const balance = Math.abs(wallet.balance);
+      console.log(balance, "BALANCE AMount");
+      if (balance < amount) {
+        let outOfCash = false;
+        resolve({ outOfCash: true })
+      } else {
+        // update the balance in the wallet
+        db.get().collection(collection.WALLET_COLLECTION)
+          .updateOne({ user: objectId(userId) },
+            {
+              $inc: { balance: -amount }
+            }
+          ).then(() => {
+            let walletSuccess = false;
+            resolve({ walletSuccess: true })
+          })
 
       }
-         
-        
+
+
 
     })
   },
   removeCartItems: (userId) => {
     return new Promise((resolve, reject) => {
       db.get().collection(collection.CART_COLLECTION).deleteOne({ user: objectId(userId) })
-      
+
         .then((response) => {
           resolve({})
         })
@@ -1324,7 +1322,7 @@ module.exports = {
 
         });
 
-      
+
 
     })
 
@@ -1332,51 +1330,51 @@ module.exports = {
 
 
   },
-  deleteCoupon:(couponId)=>{
-    return new Promise((resolve,reject)=>{
-      db.get().collection(collection.COUPON_COLLECTION).deleteOne({_id:objectId(couponId)})
-      .then((response)=>{
-        console.log(response);
-        resolve(response)
-      })
-      .catch(error => {
-        console.error(`The operation failed with error: ${error.message}`);
-      });
-    }) 
-},
-getEditCoupon:(couponId)=>{
-  return new Promise((resolve,reject)=>{
-    db.get().collection(collection.COUPON_COLLECTION).findOne({_id:objectId(couponId)})
-    .then((coupon)=>{
-      resolve(coupon)
+  deleteCoupon: (couponId) => {
+    return new Promise((resolve, reject) => {
+      db.get().collection(collection.COUPON_COLLECTION).deleteOne({ _id: objectId(couponId) })
+        .then((response) => {
+          console.log(response);
+          resolve(response)
+        })
+        .catch(error => {
+          console.error(`The operation failed with error: ${error.message}`);
+        });
     })
-    .catch(error => {
-      console.error(`The operation failed with error: ${error.message}`);
-    });
-  })
-},
-updateCoupon:(couponId,couponDetails)=>{
-  return new Promise((resolve,reject)=>{
-    db.get().collection(collection.COUPON_COLLECTION)
-    .updateOne({_id:objectId(couponId)},{
-      $set:{
-           couponName:couponDetails.couponName,
-           discountAmount:couponDetails.discountAmount,
-           couponDescription:couponDetails.couponDescription,
-           expirationDate:couponDetails.expirationDate
-      }
+  },
+  getEditCoupon: (couponId) => {
+    return new Promise((resolve, reject) => {
+      db.get().collection(collection.COUPON_COLLECTION).findOne({ _id: objectId(couponId) })
+        .then((coupon) => {
+          resolve(coupon)
+        })
+        .catch(error => {
+          console.error(`The operation failed with error: ${error.message}`);
+        });
     })
-    .then((response)=>{
-      console.log(response);
-      resolve()
+  },
+  updateCoupon: (couponId, couponDetails) => {
+    return new Promise((resolve, reject) => {
+      db.get().collection(collection.COUPON_COLLECTION)
+        .updateOne({ _id: objectId(couponId) }, {
+          $set: {
+            couponName: couponDetails.couponName,
+            discountAmount: couponDetails.discountAmount,
+            couponDescription: couponDetails.couponDescription,
+            expirationDate: couponDetails.expirationDate
+          }
+        })
+        .then((response) => {
+          console.log(response);
+          resolve()
+        })
+        .catch(error => {
+          console.error(`The operation failed with error: ${error}`);
+        });
     })
-    .catch(error => {
-      console.error(`The operation failed with error: ${error}`);
-    });
-  })
-}
-  
-  
-  
+  }
+
+
+
 
 }
