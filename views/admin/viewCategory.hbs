@@ -75,8 +75,30 @@
                 <td>
 
                   <a href="/admin/editCategory/{{this._id}}" class="btn btn-primary">Edit</a>
-                  <a href="/admin/deleteCategory/{{this._id}}" class="btn btn-danger"
+                  {{!-- <a href="/admin/deleteCategory/{{this._id}}" class="btn btn-danger"
                     onclick=" return confirm('Do you want to delete {{this.CategoryName}}? Are you sure?')">Delete</a>
+                  --}}
+                  {{#if isBlocked}}
+                  <a href="/admin/activateCategory/{{this._id}}" class="btn btn-success">Activate</a>
+                  {{else}}
+                <a href="/admin/disableCategory/{{this._id}}" class="btn btn-danger"
+   onclick="event.preventDefault(); 
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to disable {{this.name}}?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, disable it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/disableCategory/{{this._id}}';
+                }
+            });">Disable</a>
+
+
+                  {{/if}}
 
 
                 </td>
