@@ -33,11 +33,13 @@ module.exports={
       res.render('admin/addCoupon', { layout:'adminLayout',admin: true, adminIn:true });
  
   },
-  postAddCoupon:(req, res) => {
-    let couponExist=userHelpers.getCouponDetails(req.body.couponName);
+  postAddCoupon:async (req, res) => {
+    let couponExist= await userHelpers.getCouponDetails(req.body.couponName);
     let preExist=false;
-    if(couponExist)
+    if(couponExist.length>0)
+    
     {
+      console.log(couponExist,"yuisa")
        preExist=true;
       userHelpers.getAllCoupons()
       .then((coupons) => {
@@ -46,6 +48,7 @@ module.exports={
       })
 
     }else{
+      console.log("ASDG");
      preExist=false;
 
       userHelpers.addCoupon(req.body)
