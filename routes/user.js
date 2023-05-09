@@ -43,8 +43,7 @@ router.put('/profile/:id', middleware.userAuth, controller.putEditAddress)
 router.get('/product',productController.getProduct);
 router.get('/product/:id',middleware.userAuth,productController.getCatProdFilter);
 router.get('/productDetails/:id',middleware.userAuth,productController.getProductDetails);
-router.get('/upload',productController.getFileUpload);
-router.post('/upload',productController.postFileUpload);
+
 
 
 //  cart management

@@ -100,7 +100,7 @@
                                                 href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
+                                        
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
@@ -205,16 +205,25 @@
                             <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i
                                     class="fi-rs-filter mr-5"></i> Fillter</a>
                         </div> --}}
-                        {{#for 1 10 1}}
-
-                        <a href="?page={{this}}">{{this}}</a>
-                        {{/for}}
+                       
 
                     </div>
                 </div>
             </div>
 
             </div>
+             <div style=" margin-left:45%;">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+
+                {{#for 1 8 1}}
+                <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}</a></li>
+
+                {{/for}}
+              </ul>
+            </nav>
+
+          </div>
 
             </div>
 

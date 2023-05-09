@@ -129,56 +129,71 @@
 
 
         <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>No:</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Category</th>
-                <th scope="col">Description</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Image</th>
-                <th scope="col" class="text-end">Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each products}}
-              <tr>
-                <td>{{this.count}}</td>
-                <td><b>{{this.Name}}</b></td>
-                <td>₹{{this.Price}}</td>
-                <td>{{this.Category}}</td>
-                <td>{{this.Description}}</span></td>
-                <td>{{this.Quantity}}</td>
-                <td><img class="zoomable-image" style="width:50px;height:50px;" src="/uploads/{{this.images.[0]}}"
-                    alt="">
-                </td>
-                <td>
+          <div>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>No:</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Image</th>
+                  <th scope="col" class="text-end">Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each products}}
+                <tr>
+                  <td>{{this.count}}</td>
+                  <td><b>{{this.Name}}</b></td>
+                  <td>₹{{this.Price}}</td>
+                  <td>{{this.Category}}</td>
+                  <td>{{this.Description}}</span></td>
+                  <td>{{this.Quantity}}</td>
+                  <td><img class="zoomable-image" style="width:50px;height:50px;" src="/uploads/{{this.images.[0]}}"
+                      alt="">
+                  </td>
+                  <td>
 
-                  <a href="/admin/editProduct/{{this._id}}" class="btn btn-primary">Edit</a>
-                  <a href="/admin/deleteProduct/{{this._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to delete {{this.Name}}?Are you sure?')">Delete</a>
+                    <a href="/admin/editProduct/{{this._id}}" class="btn btn-primary">Edit</a>
+                    <a href="/admin/deleteProduct/{{this._id}}" class="btn btn-danger"
+                      onclick=" return confirm('Do you want to delete {{this.Name}}?Are you sure?')">Delete</a>
 
 
-                </td>
-              </tr>
-              {{/each}}
+                  </td>
+                </tr>
+                {{/each}}
 
-            </tbody>
-          </table>
+
+
+              </tbody>
+            </table>
+          </div>
+         
           <br>
           <br>
 
-          {{#for 1 10 1}}
-          <a href="?page={{this}}">{{this}}</a>
-          {{/for}}
+
 
 
           <br>
           <br>
         </div> <!-- table-responsive //end -->
       </div> <!-- card-body end// -->
+       <div style=" margin-left:45%;">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+
+                {{#for 1 8 1}}
+                <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}</a></li>
+
+                {{/for}}
+              </ul>
+            </nav>
+
+          </div>
     </div> <!-- card end// -->
   </section> <!-- content-main end// -->
 </body>

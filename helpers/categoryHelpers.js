@@ -139,11 +139,40 @@ updateCategory:(id,name)=>{
     });
   })
 },
-// getUniqueCategory:(catId)=>{
-//   return new Promise((resolve,reject)=>{
-//     let category=db.get().collection(collection.CATEGORY_COLLECTION).findOne({CategoryName:catId.CategoryName})
-//   })
-// }
+activateCategory: (userId, userDetails) => {
+  return new Promise((resolve, reject) => {
+    db.get().collection(collection.CATEGORY_COLLECTION)
+      .updateOne({ _id: objectId(userId) }, {
+        $set: {
+
+          isBlocked: false
+        }
+      })
+      .then((response) => {
+        resolve()
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+  })
+},
+disableCategory: (userId, userDetails) => {
+  return new Promise((resolve, reject) => {
+    db.get().collection(collection.CATEGORY_COLLECTION)
+      .updateOne({ _id: objectId(userId) }, {
+        $set: {
+          isBlocked: true
+        }
+      })
+      .then((response) => {
+        resolve()
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+  })
+}
+
 
 }
   

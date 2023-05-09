@@ -49,6 +49,10 @@ router.post('/addCategory',adminCategoryController.postAddCategory);
 router.get('/editCategory/:id',middleware.adminAuth,adminCategoryController.getEditCategory);
 router.post('/editCategory/:id', middleware.adminAuth,adminCategoryController.postEditCategory);
 router.get('/deleteCategory/:id',middleware.adminAuth,adminCategoryController.getDeleteCategory);
+router.get('/activateCategory/:id',middleware.adminAuth,adminCategoryController.getActivateCategory);
+router.post('/activateCategory/:id', adminCategoryController.postActivateCategory);
+router.get('/disableCategory/:id',middleware.adminAuth,adminCategoryController.getDisableCategory);
+router.post('/disableCategory/:id',adminCategoryController.postDisableCategory);
 
 // order management
 router.get('/orders',middleware.adminAuth,adminOrderController.getOrder);

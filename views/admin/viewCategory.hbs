@@ -29,7 +29,7 @@
                             <p style="color:red">Category Already Exist!!!</p>
                             {{/if}}
                           </label>
-                          <input type="text" name="CategoryName" class="form-control" />
+                          <input type="text" name="CategoryName" class="form-control" required/>
                           <button type="submit" class="btn btn-success mt-4">Submit</button>
                         </form>
 
@@ -81,24 +81,11 @@
                   {{#if isBlocked}}
                   <a href="/admin/activateCategory/{{this._id}}" class="btn btn-success">Activate</a>
                   {{else}}
-                <a href="/admin/disableCategory/{{this._id}}" class="btn btn-danger"
-   onclick="event.preventDefault(); 
-            Swal.fire({
-                title: 'Are you sure?',
-                text: 'Do you want to disable {{this.name}}?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, disable it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = '/admin/disableCategory/{{this._id}}';
-                }
-            });">Disable</a>
-
+                  <a href="/admin/disableCategory/{{this._id}}" class="btn btn-danger"
+                    onclick=" return confirm('Do you want to disable {{this.name}}? Are you sure?')">Disable</a>
 
                   {{/if}}
+
 
 
                 </td>
