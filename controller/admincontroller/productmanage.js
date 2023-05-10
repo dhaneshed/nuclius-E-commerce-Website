@@ -59,7 +59,7 @@ module.exports={
     console.log(req.body.images);
     productHelpers.addProduct(req.body)
     .then(() => {
-        res.redirect('/admin')
+        res.redirect('/admin/products')
 
     })
     .catch(error => {
@@ -71,7 +71,7 @@ module.exports={
       console.log(proId);
       productHelpers.deleteProduct(proId)
       .then((response) => {
-        res.redirect('/admin/')
+        res.redirect('/admin/products')
       })  
       .catch(error => {
         console.error(`The operation failed with error: ${error.message}`);
@@ -133,7 +133,7 @@ module.exports={
       productHelpers.updateProduct(id, req.body, images)
       .then(() => {
        
-          res.redirect("/admin");
+          res.redirect("/admin/products");
     
         
     
