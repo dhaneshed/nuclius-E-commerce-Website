@@ -35,10 +35,12 @@
                             special characters</label>
 
                           <label for="Category">Category</label>
-                          <select name="Category" id="Category">
+                          <select class="form-select" name="Category" id="Category" aria-label="Default select example">
                             {{#each categories}}
                             <option value={{this.CategoryName}}>{{this.CategoryName}}</option>
                             {{/each}}
+
+
                           </select>
                           <br>
                           <label for="Price">Price</label>
@@ -171,7 +173,7 @@
               </tbody>
             </table>
           </div>
-         
+
           <br>
           <br>
 
@@ -182,18 +184,18 @@
           <br>
         </div> <!-- table-responsive //end -->
       </div> <!-- card-body end// -->
-       <div style=" margin-left:45%;">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
+      <div style=" margin-left:45%;">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
 
-                {{#for 1 8 1}}
-                <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}</a></li>
+            {{#for 1 8 1}}
+            <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}</a></li>
 
-                {{/for}}
-              </ul>
-            </nav>
+            {{/for}}
+          </ul>
+        </nav>
 
-          </div>
+      </div>
     </div> <!-- card end// -->
   </section> <!-- content-main end// -->
 </body>
