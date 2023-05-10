@@ -37,14 +37,19 @@ module.exports={
       });
     });
   },
-  
-  
+ 
   getAllProducts:(search,page,limit)=>{
     return new Promise(async(resolve,reject)=>{
-      let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({$or:[{Name:{$regex:'.*'+search+'.*',$options:'i'}},{Category:{$regex:'.*'+search+'.*',$options:'i'}},{Price:{$regex:'.*'+search+'.*',$options:'i'}},{Description :{$regex:'.*'+search+'.*',$options:'i'}}]}).sort({ Price: 1 }).limit(limit*1).skip((page-1)*limit).toArray()
+    
+    
+       let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({$or:[{Name:{$regex:'.*'+search+'.*',$options:'i'}},{Category:{$regex:'.*'+search+'.*',$options:'i'}},{Price:{$regex:'.*'+search+'.*',$options:'i'}},{Description :{$regex:'.*'+search+'.*',$options:'i'}}]}).sort({ Price: 1 }).limit(limit*1).skip((page-1)*limit).toArray()
       
-      console.log("product is"+products)
-      resolve(products)
+       console.log("product is"+products)
+         
+       resolve(products)
+      
+      
+     
     })
   },
     

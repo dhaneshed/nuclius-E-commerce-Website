@@ -116,9 +116,9 @@ module.exports={
   },
   postActivateCategory:async (req, res) => {
    
-    userHelpers.activateUser(req.params.id, req.body)
+    categoryHelpers.activateCategory(req.params.id, req.body)
     .then(() => {
-      res.redirect('/admin/user');
+      res.redirect('/admin/category');
   
     })
     .catch(error => {
@@ -128,24 +128,20 @@ module.exports={
 
   getDisableCategory:async (req, res) => {
     adminIn = req.session.adminloggedIn
-    let user = await userHelpers.getUserDetails(req.params.id)
-    console.log(user);
-    let data = req.params.id;
-    userHelpers.disableUser(req.params.id, req.body)
+    
+    categoryHelpers.disableCategory(req.params.id, req.body)
     .then(() => {
-      res.redirect('/admin/user');
+      res.redirect('/admin/category');
     })
     .catch(error => {
       console.error(`The operation failed with error: ${error.message}`);
     });
   },
   postDisableCategory: async (req, res) => {
-    let user = await userHelpers.getUserDetails(req.params.id)
-    console.log(req.params.id);
-    let data = req.params.id;
-    userHelpers.disableUser(req.params.id, req.body)
+  
+    categoryHelpers.disableCategory(req.params.id, req.body)
     .then(() => {
-      res.redirect('/admin/user');
+      res.redirect('/admin/category');
   
     })
     .catch(error => {

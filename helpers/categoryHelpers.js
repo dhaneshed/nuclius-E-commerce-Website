@@ -139,15 +139,22 @@ updateCategory:(id,name)=>{
     });
   })
 },
-activateCategory: (userId, userDetails) => {
-  return new Promise((resolve, reject) => {
+activateCategory: (catId, catDetails) => {
+  return new Promise(async(resolve, reject) => {
+    let catName=await db.get().collection(collection.CATEGORY_COLLECTION).findOne({_id:objectId(catId)})
     db.get().collection(collection.CATEGORY_COLLECTION)
-      .updateOne({ _id: objectId(userId) }, {
+      .updateOne({ _id: objectId(catId) }, {
         $set: {
 
           isBlocked: false
         }
       })
+      db.get().collection(collection.PRODUCT_COLLECTION).updateMany({Category:catName.CategoryName},{
+
+        $set:{
+           isBlocked:false
+        }
+            })
       .then((response) => {
         resolve()
       })
@@ -156,14 +163,21 @@ activateCategory: (userId, userDetails) => {
       });
   })
 },
-disableCategory: (userId, userDetails) => {
-  return new Promise((resolve, reject) => {
+disableCategory: (catId, catDetails) => {
+  return new Promise(async(resolve, reject) => {
+    let catName=await db.get().collection(collection.CATEGORY_COLLECTION).findOne({_id:objectId(catId)})
     db.get().collection(collection.CATEGORY_COLLECTION)
-      .updateOne({ _id: objectId(userId) }, {
+      .updateOne({ _id: objectId(catId) }, {
         $set: {
           isBlocked: true
         }
       })
+      db.get().collection(collection.PRODUCT_COLLECTION).updateMany({Category:catName.CategoryName},{
+
+        $set:{
+           isBlocked:true
+        }
+            })
       .then((response) => {
         resolve()
       })

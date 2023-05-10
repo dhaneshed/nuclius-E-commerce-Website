@@ -35,10 +35,15 @@ module.exports={
     .then((products)=>{ 
       categoryHelpers.getAllCategories()
       .then((categories) => {
+      
+        
+          res.render('user/viewProducts', { products,admin:false,user,cartCount,wishListCount,categories,totalPages,currentPage:page});
+        
+
+        
           
         
-      res.render('user/viewProducts', { products,admin:false,user,cartCount,wishListCount,categories,totalPages,currentPage:page});
-        
+      
       })
       .catch(error => {
         console.error(`The operation failed with error: ${error.message}`);
