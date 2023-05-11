@@ -1248,8 +1248,14 @@ module.exports = {
   getWalletBalance: (userId) => {
     return new Promise(async (resolve, reject) => {
       let wallet = await db.get().collection(collection.WALLET_COLLECTION).findOne({ user: objectId(userId) })
-      let balance = Math.abs(wallet.balance);
-      resolve(balance)
+      let balance=0;
+      if(wallet)
+      {
+        let balance = Math.abs(wallet.balance);
+    
+      }
+      resolve(balance);
+    
     })
   },
   addToWallet: (refund, userId) => {
