@@ -108,17 +108,17 @@ module.exports={
   },
   getProfile:async(req,res)=>{
   
-    let total=await userHelpers.getTotalAmount(req.session.user._id);
-    let orders=await userHelpers.getUserOrders(req.session.user._id);
-    let balance=await userHelpers.getWalletBalance(req.session.user._id);
+    let total=await userHelpers?.getTotalAmount(req.session.user._id);
+    let orders=await userHelpers?.getUserOrders(req.session.user._id);
+    let balance=await userHelpers?.getWalletBalance(req.session.user._id);
     let cartCount=null
     let wishListCount=null
     if(req.session.user){
-      cartCount=await userHelpers.getCartCount(req.session.user._id);
-      wishListCount=await userHelpers.getWishListCount(req.session.user_id);
+      cartCount=await userHelpers?.getCartCount(req.session.user._id);
+      wishListCount=await userHelpers?.getWishListCount(req.session.user_id);
     
     }
-    userHelpers.getAllAddresses(req.session.user._id)
+    userHelpers?.getAllAddresses(req.session.user._id)
     .then((addresses)=>{ 
       res.render('user/profile',{total,user:req.session.user,cartCount,addresses,orders,balance})
      
