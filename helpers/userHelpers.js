@@ -1251,7 +1251,7 @@ module.exports = {
       let balance=0;
       if(wallet)
       {
-        let balance = Math.abs(wallet.balance);
+       balance = Math.abs(wallet.balance);
     
       }
       resolve(balance);
