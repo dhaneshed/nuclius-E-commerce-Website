@@ -1249,6 +1249,7 @@ module.exports = {
     return new Promise(async (resolve, reject) => {
       let wallet = await db.get().collection(collection.WALLET_COLLECTION).findOne({ user: objectId(userId) })
       let balance=0;
+      console.log(wallet);
       if(wallet)
       {
        balance = Math.abs(wallet.balance);
