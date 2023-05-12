@@ -34,9 +34,9 @@ router.post('/profile',controller.postAddress);
 router.get('/logout',controller.getLogout);
 //router.get('/deleteAddress/:id',middleware.userAuth,controller.getDeleteAddress);
 router.get('/editAddress/:id',middleware.userAuth,controller.getEditAddress);
-//router.post('/editAddress/:id',middleware.userAuth,controller.postEditAddress);
+router.post('/editAddress/:id',middleware.userAuth,controller.postEditAddress);
 router.delete('/delete_address/:id', middleware.userAuth, controller.deleteAddress);
-router.put('/profile/:id', middleware.userAuth, controller.putEditAddress)
+// router.put('/profile/:id', middleware.userAuth, controller.putEditAddress)
 
 
 // product management
