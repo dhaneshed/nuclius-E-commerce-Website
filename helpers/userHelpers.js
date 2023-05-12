@@ -633,6 +633,8 @@ module.exports = {
       db.get().collection(collection.ADDRESS_COLLECTION)
         .updateOne({ _id: objectId(addressId) }, {
           $set: {
+            name:addressDetails.name,
+            phone:addressDetails.phone,
             billing_address: addressDetails.billing_address,
             billing_address2: addressDetails.billing_address2,
             city: addressDetails.city,
