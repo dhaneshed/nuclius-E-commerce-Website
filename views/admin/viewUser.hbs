@@ -31,9 +31,9 @@
                                     {{#if isBlocked}}
                                     <a href="/admin/activateUser/{{this._id}}" class="btn btn-success">Activate</a>
                                     {{else}}
-                                    <a href="/admin/disableUser/{{this._id}}" class="btn btn-danger"
-                                        onclick=" return confirm('Do you want to disable {{this.name}}? Are you sure?')">Disable</a>
-
+                                    <button class="btn  btn-danger"
+                                        onclick="event.preventDefault(); disableUser('{{this.Name}}', '{{this._id}}')">
+                                        Disable</button>
                                     {{/if}}
 
                                 </td>
@@ -48,3 +48,18 @@
         </div> <!-- card end// -->
     </section> <!-- content-main end// -->
 </body>
+<script>
+        function disableUser(userName, userId) {
+    swal({
+      title: 'Are you sure?',
+      text: `Do you want to disable  ${userName}?`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((result) => {
+      if (result) {
+        window.location.href = `/admin/disableUser/${userId}`;
+      }
+    });
+  }
+</script>

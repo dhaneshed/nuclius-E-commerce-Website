@@ -86,8 +86,9 @@
                 <td>
 
                   <a href="/admin/editCoupons/{{this._id}}" class="btn btn-primary">Edit</a>
-                  <a href="/admin/deleteCoupons/{{this._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to delete {{this.Name}}?Are you sure?')">Delete</a>
+                    <button class="btn  btn-danger"
+                    onclick="event.preventDefault(); deleteCoupon('{{this.couponName}}', '{{this._id}}')">
+                    Delete</button>
 
 
                 </td>
@@ -103,6 +104,20 @@
   </section> <!-- content-main end// -->
 </body>
 <script>
+
+    function deleteCoupon(couponName, couponId) {
+    swal({
+      title: 'Are you sure?',
+      text: `Do you want to disable the coupon ${couponName}?`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((result) => {
+      if (result) {
+        window.location.href = `/admin/deleteCoupons/${couponId}`;
+      }
+    });
+  }
   function validateForm() {
     // Get the input values
     var couponName = document.getElementById("couponName").value;

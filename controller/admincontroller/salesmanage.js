@@ -54,7 +54,7 @@ module.exports={
       userHelpers.addCoupon(req.body)
       .then(() => {
   
-          res.redirect('/admin')
+          res.redirect('/admin/coupons')
       })
       .catch(error => {
         console.error(`The operation failed with error: ${error.message}`);
@@ -82,7 +82,7 @@ module.exports={
       console.log(couponId);
       userHelpers.deleteCoupon(couponId)
       .then((response) => {
-        res.redirect('/admin/')
+        res.redirect('/admin/coupons')
       })  
       .catch(error => {
         console.error(`The operation failed with error: ${error.message}`);
@@ -108,7 +108,7 @@ module.exports={
       userHelpers.updateCoupon(id, req.body)
       .then(() => {
        
-          res.redirect("/admin");
+          res.redirect("/admin/coupons");
     
         
     
