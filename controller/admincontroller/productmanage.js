@@ -141,7 +141,53 @@ module.exports={
       .catch(error => {
         console.error(`The operation failed with error: ${error.message}`);
       });
+    },
+    getActivateProduct:(req, res) => {
+      adminIn = req.session.adminloggedIn  
+      productHelpers.activateProduct(req.params.id, req.body)
+      .then(() => {
+        res.redirect('/admin/products');
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+    },
+    postActivateProduct:async (req, res) => {
+     
+      productHelpers.activateProduct(req.params.id, req.body)
+      .then(() => {
+        res.redirect('/admin/products');
+    
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+    },
+  
+    getDisableProduct:async (req, res) => {
+      adminIn = req.session.adminloggedIn
+      
+      productHelpers.disableProduct(req.params.id, req.body)
+      .then(() => {
+        res.redirect('/admin/products');
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+    },
+    postDisableProduct: async (req, res) => {
+    
+      productHelpers.disableProduct(req.params.id, req.body)
+      .then(() => {
+        res.redirect('/admin/products');
+    
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
     }
+  
+    
 
 
 }

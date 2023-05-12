@@ -34,6 +34,10 @@ router.post('/addProduct',imgUpload.uploads, adminProdController.postAddProduct)
 router.get('/deleteProduct/:id',middleware.adminAuth,adminProdController.getDeleteProduct);
 router.get('/editProduct/:id',middleware.adminAuth,adminProdController.getEditProduct);
 router.post('/editProduct/:id',imgUpload.editeduploads, adminProdController.postEditProduct);
+router.get('/activateProduct/:id',middleware.adminAuth,adminProdController.getActivateProduct);
+router.post('/activateProduct/:id', adminProdController.postActivateProduct);
+router.get('/disableProduct/:id',middleware.adminAuth,adminProdController.getDisableProduct);
+router.post('/disableProduct/:id',adminProdController.postDisableProduct);
 
 // user management
 router.get('/user',middleware.adminAuth,adminUserController.getUser);

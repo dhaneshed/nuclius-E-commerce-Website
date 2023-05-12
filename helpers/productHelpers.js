@@ -134,6 +134,40 @@ updateProduct:(proId,proDetails,images)=>{
           reject(error);
         });
     });
+  },
+  activateProduct: (prodId, prodDetails) => {
+    return new Promise(async(resolve, reject) => {
+      db.get().collection(collection.PRODUCT_COLLECTION)
+        .updateOne({ _id: objectId(prodId) }, {
+          $set: {
+  
+            isBlocked: false
+          }
+        })
+        .then((response) => {
+          resolve()
+        })
+        .catch(error => {
+          console.error(`The operation failed with error: ${error.message}`);
+        });
+    })
+  },
+  disableProduct: (prodId, prodDetails) => {
+    return new Promise(async(resolve, reject) => {
+      db.get().collection(collection.PRODUCT_COLLECTION)
+        .updateOne({ _id: objectId(prodId) }, {
+          $set: {
+            isBlocked: true
+          }
+        })
+        
+        .then((response) => {
+          resolve()
+        })
+        .catch(error => {
+          console.error(`The operation failed with error: ${error.message}`);
+        });
+    })
   }
   
 
