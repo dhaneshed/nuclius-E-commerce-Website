@@ -150,19 +150,22 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-  function disableBanner(bannerName, bannerId) {
-    swal({
-      title: 'Are you sure?',
-      text: `Do you want to disable the banner ${bannerName}?`,
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((result) => {
-      if (result) {
-        window.location.href = `/admin/disableBanner/${bannerId}`;
-      }
-    });
+   function disableBanner(bannerName,bannerId) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: `Do you want to disable the banner  ${bannerName}?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, Disable the Banner!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href =  `/admin/disableBanner/${bannerId}`;
+          }
+      });
   }
+
   function validateForm() {
     // Get the input values
     var subHeading = document.getElementById("subHeading").value;

@@ -219,18 +219,21 @@
   function viewImage3(event) {
     document.getElementById('imgView3').src = event.target = URL.createObjectURL(event.target.files[0])
   }
-  function disableProduct(prodName, prodId) {
-    swal({
-      title: 'Are you sure?',
-      text: `Do you want to disable  ${prodName}?`,
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((result) => {
-      if (result) {
-        window.location.href = `/admin/disableProduct/${prodId}`;
-      }
-    });
+ 
+  function disableProduct(prodName,prodId) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: `Do you want to disable the product  ${prodName}?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, Disable the Product!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href =  `/admin/disableProduct/${prodId}`;
+          }
+      });
   }
 
 

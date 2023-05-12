@@ -144,8 +144,6 @@
 
 
                   {{#if (eq order.status "Delivered")}}
-                  {{!-- <a href="/order-return/{{order._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to Return Item?Are you sure?')">Return Items</a> --}}
                   <button class="btn  btn-danger" onclick="event.preventDefault(); orderReturn( '{{order._id}}')">
                     Return Items</button>
                   {{else if (eq order.status "Return")}}
@@ -153,8 +151,6 @@
                   {{else if (eq order.status "Cancel")}}
                   &nbsp;
                   {{else}}
-                  {{!-- <a href="/order-cancel/{{order._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to Cancel Order?Are you sure?')">Cancel Items</a> --}}
                   <button class="btn  btn-danger" onclick="event.preventDefault(); orderCancel( '{{order._id}}')">
                     Cancel Items</button>
                   {{/if}}
@@ -172,7 +168,7 @@
           src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
         <script>
           document.write(new Date().getFullYear())
-        </script> ©, Evara - HTML Ecommerce Template .
+        </script> ©, nuclius - HTML Ecommerce Template .
       </div>
       <div class="col-sm-6">
         <div class="text-sm-end">

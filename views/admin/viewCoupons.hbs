@@ -105,18 +105,20 @@
 </body>
 <script>
 
-    function deleteCoupon(couponName, couponId) {
-    swal({
-      title: 'Are you sure?',
-      text: `Do you want to disable the coupon ${couponName}?`,
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((result) => {
-      if (result) {
-        window.location.href = `/admin/deleteCoupons/${couponId}`;
-      }
-    });
+  function deleteCoupon(couponName,couponId) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: `Do you want to disable the coupon  ${couponName}?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, Delete the Coupon!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href =  `/admin/deleteCoupons/${couponId}`;
+          }
+      });
   }
   function validateForm() {
     // Get the input values

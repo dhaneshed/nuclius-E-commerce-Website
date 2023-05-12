@@ -100,19 +100,21 @@
 </body>
 
 <script>
-  function disableCategory(categoryName, categoryId) {
-    console.log('categoryName', categoryName)
-    swal({
-      title: 'Are you sure?',
-      text: `Do you want to disable the category ${categoryName}?`,
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((result) => {
-      if (result) {
-        window.location.href = `/admin/disableCategory/${categoryId}`;
-      }
-    });
+ 
+   function disableCategory(categoryName,categoryId) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: `Do you want to disable the category  ${categoryName}?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, Disable the Category!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href =  `/admin/disableCategory/${categoryId}`;
+          }
+      });
   }
 
 </script>
