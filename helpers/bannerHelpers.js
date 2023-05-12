@@ -87,6 +87,41 @@ updateBanner:(bannerId,bannerDetails,image)=>{
       console.error(`The operation failed with error: ${error}`);
     });
   })
+},
+
+activateBanner: (bannerId, bannerDetails) => {
+  return new Promise(async(resolve, reject) => {
+    db.get().collection(collection.BANNER_COLLECTION)
+      .updateOne({ _id: objectId(bannerId) }, {
+        $set: {
+
+          isBlocked: false
+        }
+      })
+      .then((response) => {
+        resolve()
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+  })
+},
+disableBanner: (bannerId, bannerDetails) => {
+  return new Promise(async(resolve, reject) => {
+    db.get().collection(collection.BANNER_COLLECTION)
+      .updateOne({ _id: objectId(bannerId) }, {
+        $set: {
+          isBlocked: true
+        }
+      })
+      
+      .then((response) => {
+        resolve()
+      })
+      .catch(error => {
+        console.error(`The operation failed with error: ${error.message}`);
+      });
+  })
 }
 
 }

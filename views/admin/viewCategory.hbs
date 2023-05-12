@@ -29,7 +29,7 @@
                             <p style="color:red">Category Already Exist!!!</p>
                             {{/if}}
                           </label>
-                          <input type="text" name="CategoryName" class="form-control" required/>
+                          <input type="text" name="CategoryName" class="form-control" required />
                           <button type="submit" class="btn btn-success mt-4">Submit</button>
                         </form>
 
@@ -75,15 +75,13 @@
                 <td>
 
                   <a href="/admin/editCategory/{{this._id}}" class="btn btn-primary">Edit</a>
-                  {{!-- <a href="/admin/deleteCategory/{{this._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to delete {{this.CategoryName}}? Are you sure?')">Delete</a>
-                  --}}
+               
                   {{#if isBlocked}}
                   <a href="/admin/activateCategory/{{this._id}}" class="btn btn-success">Activate</a>
                   {{else}}
-                  <a href="/admin/disableCategory/{{this._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to disable {{this.name}}? Are you sure?')">Disable</a>
-
+                  <button class="btn  btn-danger"
+                    onclick="event.preventDefault(); disableCategory('{{this.CategoryName}}', '{{this._id}}')">
+                    Disable</button>
                   {{/if}}
 
 
@@ -100,3 +98,21 @@
     </div> <!-- card end// -->
   </section> <!-- content-main end// -->
 </body>
+
+<script>
+  function disableCategory(categoryName, categoryId) {
+    console.log('categoryName', categoryName)
+    swal({
+      title: 'Are you sure?',
+      text: `Do you want to disable the category ${categoryName}?`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((result) => {
+      if (result) {
+        window.location.href = `/admin/disableCategory/${categoryId}`;
+      }
+    });
+  }
+
+</script>

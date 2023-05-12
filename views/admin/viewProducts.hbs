@@ -201,6 +201,18 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
+  function viewImage(event) {
+    document.getElementById('imgView').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+  function viewImage1(event) {
+    document.getElementById('imgView1').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+  function viewImage2(event) {
+    document.getElementById('imgView2').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
+  function viewImage3(event) {
+    document.getElementById('imgView3').src = event.target = URL.createObjectURL(event.target.files[0])
+  }
 
 
 

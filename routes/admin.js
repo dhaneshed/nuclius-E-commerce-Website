@@ -48,7 +48,6 @@ router.post('/category', adminCategoryController.postCategory);
 router.post('/addCategory',adminCategoryController.postAddCategory);
 router.get('/editCategory/:id',middleware.adminAuth,adminCategoryController.getEditCategory);
 router.post('/editCategory/:id', middleware.adminAuth,adminCategoryController.postEditCategory);
-router.get('/deleteCategory/:id',middleware.adminAuth,adminCategoryController.getDeleteCategory);
 router.get('/activateCategory/:id',middleware.adminAuth,adminCategoryController.getActivateCategory);
 router.post('/activateCategory/:id', adminCategoryController.postActivateCategory);
 router.get('/disableCategory/:id',middleware.adminAuth,adminCategoryController.getDisableCategory);
@@ -78,6 +77,10 @@ router.post('/addBanner',imgUpload.bannerAdd, adminBannerController.postAddBanne
 router.get('/deleteBanner/:id',middleware.adminAuth,adminBannerController.getDeleteBanner);
 router.get('/editBanner/:id',middleware.adminAuth,adminBannerController.getEditBanner);
 router.post('/editBanner/:id',imgUpload.bannerEdit, adminBannerController.postEditBanner);
+router.get('/activateBanner/:id',middleware.adminAuth,adminBannerController.getActivateBanner);
+router.post('/activateBanner/:id', adminBannerController.postActivateBanner);
+router.get('/disableBanner/:id',middleware.adminAuth,adminBannerController.getDisableBanner);
+router.post('/disableBanner/:id',adminBannerController.postDisableBanner);
 
 
 

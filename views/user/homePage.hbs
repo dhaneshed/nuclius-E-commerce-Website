@@ -300,6 +300,7 @@
             <div class="position-relative">
               <div class="hero-slider-1 style-3 dot-style-1 dot-style-1-position-1">
                    {{#each banners}}
+                    {{#unless isBlocked}}
                 <div class="single-hero-slider single-animation-wrap">
                   <div class="container">
                     <div class="slider-1-height-3 slider-animated-1">
@@ -322,6 +323,7 @@
                     </div>
                   </div>
                 </div>
+                    {{/unless}}
                  {{/each}}
                 <div class="single-hero-slider single-animation-wrap">
                   <div class="container">

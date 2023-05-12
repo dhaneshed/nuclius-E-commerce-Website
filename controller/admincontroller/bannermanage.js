@@ -45,7 +45,7 @@ postAddBanner:(req, res) => {
     console.log(bannerId);
     bannerHelpers.deleteBanner(bannerId)
     .then((response) => {
-      res.redirect('/admin/')
+      res.redirect('/admin/banners')
     })  
     .catch(error => {
       console.error(`The operation failed with error: ${error.message}`);
@@ -80,7 +80,7 @@ postAddBanner:(req, res) => {
     bannerHelpers.updateBanner(id, req.body, image)
     .then(() => {
      
-        res.redirect("/admin");
+        res.redirect("/admin/banners");
   
       
   
@@ -88,9 +88,50 @@ postAddBanner:(req, res) => {
     .catch(error => {
       console.error(`The operation failed with error: ${error.message}`);
     });
+  },
+  getActivateBanner:(req, res) => {
+    adminIn = req.session.adminloggedIn  
+    bannerHelpers.activateBanner(req.params.id, req.body)
+    .then(() => {
+      res.redirect('/admin/banners');
+    })
+    .catch(error => {
+      console.error(`The operation failed with error: ${error.message}`);
+    });
+  },
+  postActivateBanner:async (req, res) => {
+   
+    bannerHelpers.activateBanner(req.params.id, req.body)
+    .then(() => {
+      res.redirect('/admin/banners');
+  
+    })
+    .catch(error => {
+      console.error(`The operation failed with error: ${error.message}`);
+    });
+  },
+
+  getDisableBanner:async (req, res) => {
+    adminIn = req.session.adminloggedIn
+    
+    bannerHelpers.disableBanner(req.params.id, req.body)
+    .then(() => {
+      res.redirect('/admin/banners');
+    })
+    .catch(error => {
+      console.error(`The operation failed with error: ${error.message}`);
+    });
+  },
+  postDisableBanner: async (req, res) => {
+  
+    bannerHelpers.disableBanner(req.params.id, req.body)
+    .then(() => {
+      res.redirect('/admin/banners');
+  
+    })
+    .catch(error => {
+      console.error(`The operation failed with error: ${error.message}`);
+    });
   }
 
-  
-  
-  
   }
