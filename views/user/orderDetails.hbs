@@ -144,15 +144,19 @@
 
 
                   {{#if (eq order.status "Delivered")}}
-                  <a href="/order-return/{{order._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to Return Item?Are you sure?')">Return Items</a>
+                  {{!-- <a href="/order-return/{{order._id}}" class="btn btn-danger"
+                    onclick=" return confirm('Do you want to Return Item?Are you sure?')">Return Items</a> --}}
+                  <button class="btn  btn-danger" onclick="event.preventDefault(); orderReturn( '{{order._id}}')">
+                    Return Items</button>
                   {{else if (eq order.status "Return")}}
                   &nbsp;
                   {{else if (eq order.status "Cancel")}}
                   &nbsp;
                   {{else}}
-                  <a href="/order-cancel/{{order._id}}" class="btn btn-danger"
-                    onclick=" return confirm('Do you want to Cancel Order?Are you sure?')">Cancel Items</a>
+                  {{!-- <a href="/order-cancel/{{order._id}}" class="btn btn-danger"
+                    onclick=" return confirm('Do you want to Cancel Order?Are you sure?')">Cancel Items</a> --}}
+                  <button class="btn  btn-danger" onclick="event.preventDefault(); orderCancel( '{{order._id}}')">
+                    Cancel Items</button>
                   {{/if}}
 
                 </div>
@@ -193,3 +197,39 @@
   <!-- Main Script -->
   <script src="assets/js/main.js" type="text/javascript"></script>
 </body>
+<script>
+  function orderCancel(orderId) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: `Do you want to cancel the order?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, Cancel the Order!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href = `/order-cancel/${orderId}`;
+          }
+      });
+  }
+
+
+   function orderReturn(orderId) {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: `Do you want to return the ordered items?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, Return the items!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              window.location.href = `/order-return/${orderId}`;
+          }
+      });
+  }
+
+
+</script>
