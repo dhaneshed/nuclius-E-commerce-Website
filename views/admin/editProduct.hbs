@@ -13,8 +13,10 @@
           <input type="text" name="Name" class="form-control" value="{{product.Name}}"/>
 
           <label for="Category">Category</label>
-          <select name="Category" id="Category">
-            <option value={{product.Category}}>{{product.Category}}</option>
+              <select class="form-select" name="Category" id="Category" aria-label="Default select example">
+              {{#each categories}}
+              <option value={{this.CategoryName}}>{{this.CategoryName}}</option>
+              {{/each}}
           </select>
           <br>
           <label for="Price">Price</label>
