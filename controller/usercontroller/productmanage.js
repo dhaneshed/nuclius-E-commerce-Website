@@ -77,7 +77,7 @@ module.exports={
         categoryHelpers.getAllCategories()
         .then((categories) => {
             
-        res.render('user/viewProducts', { products,admin:false,user,cartCount,categories});
+        res.render('user/viewCategoryProducts', { products,admin:false,user,cartCount,categories});
           
         })
         .catch(error => {
