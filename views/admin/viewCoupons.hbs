@@ -129,13 +129,13 @@
     
     // Check if any of the inputs are empty
     if (couponName == "" || discountAmount == "" || couponDescription == "" || expirationDate == "") {
-      alert("Please fill out all fields.");
+      Swal.fire("Please fill out all fields.");
       return false;
     }
     
     // Check if discount amount is greater than 0
     if (discountAmount <= 0) {
-      alert("Discount amount must be greater than 0.");
+      Swal.fire("Discount amount must be greater than 0.");
       return false;
     }
     
@@ -143,7 +143,7 @@
     var today = new Date();
     var selectedDate = new Date(expirationDate);
     if (selectedDate <= today) {
-      alert("Expiration date must be in the future.");
+      Swal.fire("Expiration date must be in the future.");
       return false;
     }
     

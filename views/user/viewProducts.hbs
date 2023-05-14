@@ -8,7 +8,7 @@
                             <div class="row">
                                 <form>
                                     <div class="row">
-                                        
+
                                         <div class="form-group col-md-4">
                                             <input type="text" placeholder="Search..." name="search"
                                                 style="display:inline-block;">
@@ -101,7 +101,7 @@
                                                 href="shop-compare.html"><i class="fi-rs-shuffle"></i></a> --}}
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                        
+
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
@@ -128,8 +128,8 @@
                             </div>
                             {{/unless}}
                             {{/each}}
-                
-                    
+
+
 
                             <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                                 <div>
@@ -209,25 +209,51 @@
                             <a href="shop-grid-right.html" class="btn btn-sm btn-default"><i
                                     class="fi-rs-filter mr-5"></i> Fillter</a>
                         </div> --}}
-                       
+
 
                     </div>
                 </div>
             </div>
 
             </div>
-             <div style=" margin-left:45%;">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
+            <div style=" margin-left:45%;">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
 
-                {{#for 1 7 1}}
-                <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}</a></li>
+                        {{!-- {{#for 1 7 1}}
+                        <li class="page-item"><a class="page-link" href="?page={{this}}">{{this}}</a></li>
 
-                {{/for}}
-              </ul>
-            </nav>
+                        {{/for}} --}}
 
-          </div>
+
+                        {{#if previousPage}}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{previousPage}}">Previous</a>
+                        </li>
+                        {{/if}}
+
+                        {{#for start end increment}}
+                        {{#if currentPageEqualsThis}}
+                        <li class="page-item active">
+                            <span class="page-link">{{this}}</span>
+                        </li>
+                        {{else}}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{this}}">{{this}}</a>
+                        </li>
+                        {{/if}}
+                        {{/for}}
+
+                        {{#if nextPage}}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{nextPage}}">Next</a>
+                        </li>
+                        {{/if}}
+
+                    </ul>
+                </nav>
+
+            </div>
 
             </div>
 
@@ -237,7 +263,7 @@
     </main>
 </body>
 <script>
-   
+
 
 
     function addToWishList(proId) {

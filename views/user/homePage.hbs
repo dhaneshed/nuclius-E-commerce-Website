@@ -294,70 +294,67 @@
   </div>
   <main class="main">
     <section class="home-slider position-relative pt-25 pb-20">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <div class="position-relative">
-              <div class="hero-slider-1 style-3 dot-style-1 dot-style-1-position-1">
-                   {{#each banners}}
-                    {{#unless isBlocked}}
-                <div class="single-hero-slider single-animation-wrap">
-                  <div class="container">
-                    <div class="slider-1-height-3 slider-animated-1">
-                      <div class="hero-slider-content-2">
-                        <h4 class="animated">{{this.subHeading}}</h4>
-                        <h2 class="animated fw-900">{{this.mainHeading}}</h2>
-                        <h1 class="animated fw-900 text-brand">
-                          {{this.content}}
-                        </h1>
-                        <p class="animated">
-                          {{this.tagline_01}}
-                        </p>
-                        <a class="animated btn btn-brush btn-brush-3" href="/product">
-                          {{this.tagline_02}}
-                        </a>
-                      </div>
-                      <div class="slider-img">
-                        <img  src="/uploads/{{this.image}}" alt="" />
-                      </div>
-                    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="position-relative">
+          <div class="hero-slider-1 style-3 dot-style-1 dot-style-1-position-1">
+            {{#each banners}}
+            {{#unless isBlocked}}
+            <div class="single-hero-slider single-animation-wrap">
+              <div class="container">
+                <div class="slider-1-height-3 slider-animated-1">
+                  <div class="hero-slider-content-2">
+                    <h4 class="animated">{{this.subHeading}}</h4>
+                    <h2 class="animated fw-900">{{this.mainHeading}}</h2>
+                    <h1 class="animated fw-900 text-brand">
+                      {{this.content}}
+                    </h1>
+                    <p class="animated">
+                      {{this.tagline_01}}
+                    </p>
+                    <a class="animated btn btn-brush btn-brush-3" href="/product">
+                      {{this.tagline_02}}
+                    </a>
                   </div>
-                </div>
-                    {{/unless}}
-                 {{/each}}
-                <div class="single-hero-slider single-animation-wrap">
-                  <div class="container">
-                    <div class="slider-1-height-3 slider-animated-1">
-                      <div class="hero-slider-content-2">
-                        <h4 class="animated">Tech Promotions</h4>
-                        <h2 class="animated fw-900">Tech Trending</h2>
-                        <h1 class="animated fw-900 text-brand">
-                          Great Collection
-                        </h1>
-                        <p class="animated">
-                          Save more with coupons & up to 20% off
-                        </p>
-                        <a class="animated btn btn-brush btn-brush-3" href="/product">
-                          Shop Now
-                        </a>
-                      </div>
-
-                      <div class="slider-img">
-                        <img src="assets/imgs/slider/slider-5.png" alt="" />
-                      </div>
-                    </div>
+                  <div class="slider-img">
+                    <img src="/uploads/{{this.image}}" style="width:400vh; height:400vh;" alt=""/>
                   </div>
                 </div>
               </div>
-              <div class="slider-arrow hero-slider-1-arrow style-3"></div>
+            </div>
+            {{/unless}}
+            {{/each}}
+            <div class="single-hero-slider single-animation-wrap">
+              <div class="container">
+                <div class="slider-1-height-3 slider-animated-1">
+                  <div class="hero-slider-content-2">
+                    <h4 class="animated">Tech Promotions</h4>
+                    <h2 class="animated fw-900">Tech Trending</h2>
+                    <h1 class="animated fw-900 text-brand">
+                      Great Collection
+                    </h1>
+                    <p class="animated">
+                      Save more with coupons & up to 20% off
+                    </p>
+                    <a class="animated btn btn-brush btn-brush-3" href="/product">
+                      Shop Now
+                    </a>
+                  </div>
+
+                  <div class="slider-img">
+                    <img src="assets/imgs/slider/slider-5.png" style="width:400vh; height:400vh;" alt="" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 d-md-none d-lg-block">
-
-          </div>
+          <div class="slider-arrow hero-slider-1-arrow style-3"></div>
         </div>
-    </section>
-    
+      </div>
+    </div>
+  </div>
+</section>
     <section class="product-tabs section-padding wow fadeIn animated">
       <div class="container">
         <div class="tab-header">
