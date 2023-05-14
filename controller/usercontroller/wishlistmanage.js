@@ -41,12 +41,12 @@ module.exports={
 
     const userId = req.session.user._id;
     userHelpers.addToWishList(productId, userId)
-      .then(() => {
-        res.json({ status: true });
+      .then((response) => {
+        res.json( response );
       })
       .catch(error => {
         console.error(`The operation failed with error: ${error.message}`);
-        res.json({ status: false, message: 'Failed to add item to cart' });
+        res.json({ status: false, message: 'Failed to add item to wishlist' });
       });
 
 

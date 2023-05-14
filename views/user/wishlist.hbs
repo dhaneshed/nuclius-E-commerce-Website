@@ -85,37 +85,6 @@
     </section>
 </main>
 <script>
-    function addToWishList(proId) {
-        $.ajax({
-            url: '/addToWishList/' + proId,
-            method: 'get',
-            success: (response) => {
-
-                if (response.status) {
-                    let count = $('#wishListCount').html()
-                    count = parseInt(count) + 1
-
-                    $("#wishListCount").html(count)
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Added to Wish List',
-                    })
-                } else {
-
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Out of Stock',
-                    }).then(() => {
-                        location.reload();
-                    });
-
-
-                }
-
-            }
-        })
-    }
-
 
     function removeWishListProduct(wishListId, proId) {
         $.ajax({

@@ -109,12 +109,13 @@
                                             <a href="/productDetails/{{this._id}}">{{this.Category}}</a>
                                         </div>
                                         <h2><a href="/productDetails/{{this._id}}">{{this.Name}}</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span></span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
+                                        {{#if (eq this.Quantity 0)}}
+                                        <span class="text-danger font-weight-bold">Out of stock</span>
+                                        {{else}}
+                                         <span class="text-success font-weight-bold">In Stock</span>
+
+                                        {{/if}}
+                                          <div class="product-price">
                                             <span>₹{{this.Price}}</span>
 
                                         </div>

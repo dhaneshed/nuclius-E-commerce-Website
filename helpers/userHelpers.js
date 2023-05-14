@@ -1193,9 +1193,14 @@ module.exports = {
     }
     return new Promise(async (resolve, reject) => {
       let userWishList = await db.get().collection(collection.WISHLIST_COLLECTION).findOne({ user: objectId(userId) })
+      let product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({ _id: objectId(proId) })
       if (userWishList) {
         let proExist = userWishList.products.findIndex(product => product.item == proId)
-        if (proExist != -1) {
+        if (proExist != -1 && product && product.Quantity > 0) {
+          resolve({ outOfStock: false })
+
+        } else if (product && product.Quantity < 1) {
+          resolve({ outOfStock: true })
 
         }
         else {
@@ -1210,7 +1215,12 @@ module.exports = {
               resolve()
             })
         }
-      } else {
+      }else if (product && product.Quantity < 1) {
+        // check the availability of the product in the inventory
+        resolve({ outOfStock: true })
+
+      } 
+      else {
         let wishListObj = {
           user: objectId(userId),
           products: [proObj]

@@ -34,17 +34,8 @@ function addToWishList(proId) {
     method: 'get',
     success: (response) => {
 
-      if (response.status) {
-        let count = $('#wishListCount').html()
-        count = parseInt(count) + 1
-
-        $("#wishListCount").html(count)
-        Swal.fire({
-          icon: 'success',
-          title: 'Added to Wish List',
-        })
-      } else {
-
+      if (response.outOfStock) {
+        
         Swal.fire({
           icon: 'warning',
           title: 'Out of Stock',
@@ -52,8 +43,16 @@ function addToWishList(proId) {
           location.reload();
         });
 
+      } else {
+        let count = $('#wishListCount').html()
+        count = parseInt(count) + 1
 
-      }
+        $("#wishListCount").html(count)
+        Swal.fire({
+          icon: 'success',
+          title: 'Added to Wishlist',
+        })
+      } 
 
     }
   })
