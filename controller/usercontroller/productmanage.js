@@ -37,7 +37,7 @@ module.exports={
       .then((categories) => {
       
         
-          res.render('user/viewProducts', { products,admin:false,user,cartCount,wishListCount,categories,totalPages,currentPage:page});
+          res.render('user/viewProducts', { products,admin:false,user,cartCount,wishListCount,categories,totalPages,currentPage:page,search});
         
 
         
